@@ -24,14 +24,11 @@ public class App extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        
+
         instance = this;
 
         setubDB();
-
-        appComponent = DaggerAppComponent.builder()
-                .appModule(new AppModule(daoSession))
-                .build();
+        setupDI();
     }
 
     public AppComponent getAppComponent() {
@@ -46,5 +43,11 @@ public class App extends Application {
         DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(this, "users-db");
         Database db = helper.getWritableDb();
         daoSession = new DaoMaster(db).newSession();
+    }
+
+    private void setupDI() {
+        appComponent = DaggerAppComponent.builder()
+                .appModule(new AppModule(daoSession))
+                .build();
     }
 }
