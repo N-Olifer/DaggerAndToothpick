@@ -1,7 +1,7 @@
 package ru.wyeg.daggerdemo.di;
 
 import dagger.Component;
-import ru.wyeg.daggerdemo.UsersPresenter;
+import ru.wyeg.daggerdemo.users.UsersPresenter;
 
 /**
  * @author Nikita Olifer.

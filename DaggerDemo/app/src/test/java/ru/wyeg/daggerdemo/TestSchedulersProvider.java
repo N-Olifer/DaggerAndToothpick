@@ -1,4 +1,4 @@
-package ru.wyeg.toothpickdemo;
+package ru.wyeg.daggerdemo;
 
 import java.util.concurrent.TimeUnit;
 
@@ -6,7 +6,7 @@ import io.reactivex.Scheduler;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.internal.schedulers.ExecutorScheduler;
-import ru.wyeg.toothpickdemo.mvp.SchedulerProvider;
+import ru.wyeg.daggerdemo.mvp.SchedulerProvider;
 
 /**
  * Created by onoli on 7/17/2017.

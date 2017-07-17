@@ -1,8 +1,9 @@
-package ru.wyeg.toothpickdemo;
+package ru.wyeg.toothpickdemo.users;
 
 import javax.inject.Inject;
 
 import ru.wyeg.domain.GetUsersInteractor;
+import ru.wyeg.toothpickdemo.mvp.BasePresenter;
 
 /**
  * @author Nikita Olifer.

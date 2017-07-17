@@ -1,4 +1,4 @@
-package ru.wyeg.daggerdemo;
+package ru.wyeg.toothpickdemo.users;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -10,6 +10,7 @@ import com.hannesdorfmann.mosby3.mvp.MvpActivity;
 import java.util.List;
 
 import ru.wyeg.data.UserEntity;
+import ru.wyeg.toothpickdemo.R;
 
 /**
  * @author Nikita Olifer.

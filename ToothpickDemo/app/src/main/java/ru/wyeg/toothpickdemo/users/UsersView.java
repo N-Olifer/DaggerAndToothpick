@@ -1,4 +1,4 @@
-package ru.wyeg.toothpickdemo;
+package ru.wyeg.toothpickdemo.users;
 
 import com.hannesdorfmann.mosby3.mvp.MvpView;
 

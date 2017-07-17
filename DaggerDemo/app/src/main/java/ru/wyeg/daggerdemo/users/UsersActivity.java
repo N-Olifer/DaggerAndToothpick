@@ -1,4 +1,4 @@
-package ru.wyeg.toothpickdemo;
+package ru.wyeg.daggerdemo.users;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -9,6 +9,8 @@ import com.hannesdorfmann.mosby3.mvp.MvpActivity;
 
 import java.util.List;
 
+import ru.wyeg.daggerdemo.App;
+import ru.wyeg.daggerdemo.R;
 import ru.wyeg.data.UserEntity;
 
 /**
@@ -37,7 +39,7 @@ public class UsersActivity extends MvpActivity<UsersView, UsersPresenter> implem
     @NonNull
     @Override
     public UsersPresenter createPresenter() {
-        return new UsersPresenter();
+        return new UsersPresenter(App.getInstance().getAppComponent());
     }
 
     @Override

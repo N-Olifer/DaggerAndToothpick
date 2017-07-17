@@ -1,4 +1,4 @@
-package ru.wyeg.daggerdemo;
+package ru.wyeg.daggerdemo.users;
 
 import com.hannesdorfmann.mosby3.mvp.MvpView;
 

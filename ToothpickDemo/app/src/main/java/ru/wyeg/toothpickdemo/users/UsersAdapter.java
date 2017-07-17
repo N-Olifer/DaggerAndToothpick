@@ -1,4 +1,4 @@
-package ru.wyeg.toothpickdemo;
+package ru.wyeg.toothpickdemo.users;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -9,6 +9,7 @@ import android.widget.TextView;
 import java.util.List;
 
 import ru.wyeg.data.UserEntity;
+import ru.wyeg.toothpickdemo.R;
 
 /**
  * @author Nikita Olifer.

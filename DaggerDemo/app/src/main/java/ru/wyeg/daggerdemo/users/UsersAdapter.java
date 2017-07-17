@@ -1,4 +1,4 @@
-package ru.wyeg.daggerdemo;
+package ru.wyeg.daggerdemo.users;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import ru.wyeg.daggerdemo.R;
 import ru.wyeg.data.UserEntity;
 
 /**

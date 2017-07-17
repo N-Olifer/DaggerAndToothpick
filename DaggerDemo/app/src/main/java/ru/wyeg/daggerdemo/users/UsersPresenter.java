@@ -1,9 +1,9 @@
-package ru.wyeg.daggerdemo;
+package ru.wyeg.daggerdemo.users;
 
 import javax.inject.Inject;
 
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.schedulers.Schedulers;
+import ru.wyeg.daggerdemo.di.AppComponent;
+import ru.wyeg.daggerdemo.mvp.BasePresenter;
 import ru.wyeg.domain.GetUsersInteractor;
 
 /**
@@ -11,18 +11,17 @@ import ru.wyeg.domain.GetUsersInteractor;
  */
 public class UsersPresenter extends BasePresenter<UsersView> {
 
-
     @Inject
     GetUsersInteractor getUsersInteractor;
 
-    public UsersPresenter() {
-        App.getInstance().getAppComponent().inject(this);
+    public UsersPresenter(AppComponent appComponent) {
+        appComponent.inject(this);
     }
 
     public void loadUsers() {
         addSubscription(getUsersInteractor.getUsers()
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(schedulers.io())
+                .observeOn(schedulers.ui())
                 .subscribe(users -> {
                     if (isViewAttached()) {
                         getView().showUsers(users);

@@ -1,4 +1,4 @@
-package ru.wyeg.toothpickdemo;
+package ru.wyeg.toothpickdemo.di;
 
 /**
  * Created by onoli on 7/17/2017.

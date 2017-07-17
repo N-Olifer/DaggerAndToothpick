@@ -1,39 +1,38 @@
-package ru.wyeg.toothpickdemo;
+package ru.wyeg.daggerdemo;
 
 import org.junit.Before;
-import org.junit.Rule;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Spy;
+import org.mockito.runners.MockitoJUnitRunner;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import io.reactivex.Single;
+import ru.wyeg.daggerdemo.mvp.SchedulerProvider;
+import ru.wyeg.daggerdemo.users.UsersPresenter;
+import ru.wyeg.daggerdemo.users.UsersView;
 import ru.wyeg.data.UserEntity;
 import ru.wyeg.domain.GetUsersInteractor;
-import ru.wyeg.toothpickdemo.mvp.SchedulerProvider;
-import ru.wyeg.toothpickdemo.users.UsersPresenter;
-import ru.wyeg.toothpickdemo.users.UsersView;
-import toothpick.testing.ToothPickRule;
 
-import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 /**
  * Created by onoli on 7/17/2017.
  */
+@RunWith(MockitoJUnitRunner.class)
 public class UsersPresenterTest {
 
-    @Mock
-    SchedulerProvider schedulerProvider = new TestSchedulersProvider();
-    @Mock
-    UsersView view = mock(UsersView.class);
-    @Mock GetUsersInteractor getUsersInteractor = mock(GetUsersInteractor.class);
-    private final UsersPresenter presenter = new UsersPresenter();
+    @Spy SchedulerProvider schedulerProvider = new TestSchedulersProvider();
+    @Mock GetUsersInteractor getUsersInteractor;
+    @Mock UsersView view;
 
-    @Rule
-    public ToothPickRule toothPickRule = new ToothPickRule(this, presenter);
+    @InjectMocks
+    UsersPresenter presenter = new UsersPresenter(usersPresenter -> {});
 
     @Before
     public void setUp() throws Exception {

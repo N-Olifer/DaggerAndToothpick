@@ -10,6 +10,8 @@ import io.reactivex.schedulers.Schedulers;
 import ru.wyeg.data.DaoMaster;
 import ru.wyeg.data.DaoSession;
 import ru.wyeg.data.UserEntityDao;
+import ru.wyeg.toothpickdemo.di.Scopes;
+import ru.wyeg.toothpickdemo.mvp.SchedulerProvider;
 import toothpick.Scope;
 import toothpick.Toothpick;
 import toothpick.config.Module;
