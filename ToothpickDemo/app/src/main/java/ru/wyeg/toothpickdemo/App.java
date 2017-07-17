@@ -4,6 +4,9 @@ import android.app.Application;
 
 import org.greenrobot.greendao.database.Database;
 
+import io.reactivex.Scheduler;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
 import ru.wyeg.data.DaoMaster;
 import ru.wyeg.data.DaoSession;
 import ru.wyeg.data.UserEntityDao;
@@ -32,15 +35,22 @@ public class App extends Application {
 
         setubDB();
 
-        Scope appScope = Toothpick.openScope(this);
+        Scope appScope = Toothpick.openScope(Scopes.APPLICATION);
 
         appScope.installModules(new Module() {{
             bind(UserEntityDao.class).toInstance(daoSession.getUserEntityDao());
-        }});
-    }
+            bind(SchedulerProvider.class).toInstance(new SchedulerProvider() {
+                @Override
+                public Scheduler ui() {
+                    return AndroidSchedulers.mainThread();
+                }
 
-    public static App getInstance() {
-        return instance;
+                @Override
+                public Scheduler io() {
+                    return Schedulers.io();
+                }
+            });
+        }});
     }
 
     private void setubDB() {

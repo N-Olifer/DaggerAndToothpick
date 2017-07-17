@@ -2,8 +2,6 @@ package ru.wyeg.toothpickdemo;
 
 import javax.inject.Inject;
 
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.schedulers.Schedulers;
 import ru.wyeg.domain.GetUsersInteractor;
 
 /**
@@ -16,8 +14,8 @@ public class UsersPresenter extends BasePresenter<UsersView> {
 
     public void loadUsers() {
         addSubscription(getUsersInteractor.getUsers()
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(schedulers.io())
+                .observeOn(schedulers.ui())
                 .subscribe(users -> {
                     if (isViewAttached()) {
                         getView().showUsers(users);
