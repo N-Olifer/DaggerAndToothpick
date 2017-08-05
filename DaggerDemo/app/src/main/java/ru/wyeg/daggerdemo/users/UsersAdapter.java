@@ -17,6 +17,11 @@ import ru.wyeg.data.UserEntity;
 public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.ViewHolder> {
 
     private List<UserEntity> items;
+    private OnUserClickListener onUserClickListener;
+
+    public UsersAdapter(OnUserClickListener onUserClickListener) {
+        this.onUserClickListener = onUserClickListener;
+    }
 
     public void setUsers(List<UserEntity> users) {
         items = users;
@@ -31,6 +36,9 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.ViewHolder> 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         holder.nameTextView.setText(items.get(position).getName());
+
+        holder.itemView.setOnClickListener(v ->
+                onUserClickListener.onUserClicked(items.get(holder.getAdapterPosition())));
     }
 
     @Override
@@ -47,5 +55,9 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.ViewHolder> 
 
             nameTextView = (TextView) itemView.findViewById(R.id.user_name);
         }
+    }
+
+    interface OnUserClickListener {
+        void onUserClicked(UserEntity user);
     }
 }

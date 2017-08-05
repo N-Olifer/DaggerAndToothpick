@@ -18,7 +18,11 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".users.UsersActivity">
+        <activity android:name=".users.UserListActivity">
+
+        </activity>
+
+        <activity android:name=".user.UserActivity">
 
         </activity>
     </application>

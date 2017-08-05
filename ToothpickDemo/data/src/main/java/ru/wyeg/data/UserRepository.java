@@ -24,4 +24,8 @@ public class UserRepository {
             return dao.loadAll();
         });
     }
+
+    public Single<UserEntity> getUser(long id) {
+        return Single.fromCallable(() -> dao.load(id));
+    }
 }

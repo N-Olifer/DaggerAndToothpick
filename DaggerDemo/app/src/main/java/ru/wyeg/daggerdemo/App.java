@@ -7,6 +7,8 @@ import org.greenrobot.greendao.database.Database;
 import ru.wyeg.daggerdemo.di.AppComponent;
 import ru.wyeg.daggerdemo.di.AppModule;
 import ru.wyeg.daggerdemo.di.DaggerAppComponent;
+import ru.wyeg.daggerdemo.di.UsersModule;
+import ru.wyeg.daggerdemo.di.UsersSubcomponent;
 import ru.wyeg.data.DaoMaster;
 import ru.wyeg.data.DaoSession;
 
@@ -18,6 +20,7 @@ public class App extends Application {
     private DaoSession daoSession;
 
     private AppComponent appComponent;
+    private UsersSubcomponent usersSubcomponent;
 
     private static App instance;
 
@@ -35,6 +38,10 @@ public class App extends Application {
         return appComponent;
     }
 
+    public UsersSubcomponent getUsersSubcomponent() {
+        return usersSubcomponent;
+    }
+
     public static App getInstance() {
         return instance;
     }
@@ -49,5 +56,7 @@ public class App extends Application {
         appComponent = DaggerAppComponent.builder()
                 .appModule(new AppModule(daoSession))
                 .build();
+
+        usersSubcomponent = appComponent.plus(new UsersModule());
     }
 }

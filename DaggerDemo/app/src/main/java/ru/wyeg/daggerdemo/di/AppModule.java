@@ -1,5 +1,7 @@
 package ru.wyeg.daggerdemo.di;
 
+import javax.inject.Singleton;
+
 import dagger.Module;
 import dagger.Provides;
 import io.reactivex.Scheduler;
@@ -21,13 +23,15 @@ public class AppModule {
         this.daoSession = daoSession;
     }
 
+    @Singleton
     @Provides
     public UserEntityDao provideUserEntityDao() {
         return daoSession.getUserEntityDao();
     }
 
+    @Singleton
     @Provides
-    public SchedulerProvider provideSchedulerProvvider() {
+    public SchedulerProvider provideSchedulerProvider() {
         return new SchedulerProvider() {
             @Override
             public Scheduler ui() {

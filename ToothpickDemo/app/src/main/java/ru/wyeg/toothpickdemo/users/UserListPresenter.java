@@ -8,7 +8,7 @@ import ru.wyeg.toothpickdemo.mvp.BasePresenter;
 /**
  * @author Nikita Olifer.
  */
-public class UsersPresenter extends BasePresenter<UsersView> {
+public class UserListPresenter extends BasePresenter<UserListView> {
 
     @Inject
     GetUsersInteractor getUsersInteractor;

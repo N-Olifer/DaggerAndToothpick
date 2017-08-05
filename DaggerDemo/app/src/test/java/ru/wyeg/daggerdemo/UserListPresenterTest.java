@@ -12,9 +12,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import io.reactivex.Single;
+import ru.wyeg.daggerdemo.di.UsersSubcomponent;
 import ru.wyeg.daggerdemo.mvp.SchedulerProvider;
-import ru.wyeg.daggerdemo.users.UsersPresenter;
-import ru.wyeg.daggerdemo.users.UsersView;
+import ru.wyeg.daggerdemo.user.UserPresenter;
+import ru.wyeg.daggerdemo.users.UserListPresenter;
+import ru.wyeg.daggerdemo.users.UserListView;
 import ru.wyeg.data.UserEntity;
 import ru.wyeg.domain.GetUsersInteractor;
 
@@ -25,14 +27,25 @@ import static org.mockito.Mockito.when;
  * Created by onoli on 7/17/2017.
  */
 @RunWith(MockitoJUnitRunner.class)
-public class UsersPresenterTest {
+public class UserListPresenterTest {
 
     @Spy SchedulerProvider schedulerProvider = new TestSchedulersProvider();
     @Mock GetUsersInteractor getUsersInteractor;
-    @Mock UsersView view;
+    @Mock
+    UserListView view;
 
     @InjectMocks
-    UsersPresenter presenter = new UsersPresenter(usersPresenter -> {});
+    UserListPresenter presenter = new UserListPresenter(new UsersSubcomponent() {
+        @Override
+        public void inject(UserPresenter userPresenter) {
+
+        }
+
+        @Override
+        public void inject(UserListPresenter userListPresenter) {
+
+        }
+    });
 
     @Before
     public void setUp() throws Exception {

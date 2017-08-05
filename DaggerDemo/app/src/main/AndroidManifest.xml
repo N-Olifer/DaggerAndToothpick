@@ -18,7 +18,11 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="ru.wyeg.daggerdemo.users.UsersActivity">
+        <activity android:name="ru.wyeg.daggerdemo.users.UserListActivity">
+
+        </activity>
+
+        <activity android:name="ru.wyeg.daggerdemo.user.UserActivity">
 
         </activity>
     </application>

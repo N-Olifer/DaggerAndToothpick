@@ -9,7 +9,7 @@ import ru.wyeg.data.UserEntity;
 /**
  * @author Nikita Olifer.
  */
-public interface UsersView extends MvpView {
+public interface UserListView extends MvpView {
 
     void showUsers(List<UserEntity> users);
 }

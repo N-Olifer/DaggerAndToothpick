@@ -19,4 +19,8 @@ public class GetUsersInteractor {
     public Single<List<UserEntity>> getUsers() {
         return userRepository.getUsers();
     }
+
+    public Single<UserEntity> getUser(long id) {
+        return userRepository.getUser(id);
+    }
 }

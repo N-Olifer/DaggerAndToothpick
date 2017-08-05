@@ -2,20 +2,20 @@ package ru.wyeg.daggerdemo.users;
 
 import javax.inject.Inject;
 
-import ru.wyeg.daggerdemo.di.AppComponent;
+import ru.wyeg.daggerdemo.di.UsersSubcomponent;
 import ru.wyeg.daggerdemo.mvp.BasePresenter;
 import ru.wyeg.domain.GetUsersInteractor;
 
 /**
  * @author Nikita Olifer.
  */
-public class UsersPresenter extends BasePresenter<UsersView> {
+public class UserListPresenter extends BasePresenter<UserListView> {
 
     @Inject
     GetUsersInteractor getUsersInteractor;
 
-    public UsersPresenter(AppComponent appComponent) {
-        appComponent.inject(this);
+    public UserListPresenter(UsersSubcomponent usersSubcomponent) {
+        usersSubcomponent.inject(this);
     }
 
     public void loadUsers() {
