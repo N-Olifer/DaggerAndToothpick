@@ -46,17 +46,17 @@ public class App extends Application {
         return instance;
     }
 
-    private void setubDB() {
-        DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(this, "users-db");
-        Database db = helper.getWritableDb();
-        daoSession = new DaoMaster(db).newSession();
-    }
-
     private void setupDI() {
         appComponent = DaggerAppComponent.builder()
                 .appModule(new AppModule(daoSession))
                 .build();
 
         usersSubcomponent = appComponent.plus(new UsersModule());
+    }
+
+    private void setubDB() {
+        DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(this, "users-db");
+        Database db = helper.getWritableDb();
+        daoSession = new DaoMaster(db).newSession();
     }
 }

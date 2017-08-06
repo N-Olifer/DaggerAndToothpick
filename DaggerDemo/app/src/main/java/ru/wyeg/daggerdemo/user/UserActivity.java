@@ -42,6 +42,7 @@ public class UserActivity extends MvpActivity<UserView, UserPresenter> implement
         return new UserPresenter(App.getInstance().getUsersSubcomponent());
     }
 
+
     @Override
     public void setUser(UserEntity user) {
         userNameView.setText(user.getName());

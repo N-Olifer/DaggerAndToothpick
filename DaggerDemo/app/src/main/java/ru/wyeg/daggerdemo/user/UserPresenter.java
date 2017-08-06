@@ -1,7 +1,5 @@
 package ru.wyeg.daggerdemo.user;
 
-import android.util.Log;
-
 import javax.inject.Inject;
 
 import ru.wyeg.daggerdemo.di.UsersSubcomponent;
@@ -18,8 +16,6 @@ public class UserPresenter extends BasePresenter<UserView> {
 
     UserPresenter(UsersSubcomponent usersSubcomponent) {
         usersSubcomponent.inject(this);
-
-        Log.i("DI_test", "Interactor : " + getUsersInteractor.toString());
     }
 
     void loadUser(long id) {

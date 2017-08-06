@@ -10,23 +10,19 @@ import io.reactivex.disposables.Disposable;
 import ru.wyeg.toothpickdemo.di.Scopes;
 import toothpick.Scope;
 import toothpick.Toothpick;
+import toothpick.config.Module;
 
 /**
  * @author Nikita Olifer.
  */
 public abstract class BasePresenter<V extends MvpView> extends MvpBasePresenter<V> {
 
-    private final CompositeDisposable compositeDisposable = new CompositeDisposable();
-    private boolean injected;
-
-    @Inject
-    protected SchedulerProvider schedulers;
-
     @Override
     public void attachView(V view) {
         super.attachView(view);
         if (!injected) {
-            Scope scope = Toothpick.openScopes(Scopes.APPLICATION, this);
+            Scope scope = openScope();
+            scope.installModules(modules);
             Toothpick.inject(this, scope);
             injected = true;
         }
@@ -39,6 +35,21 @@ public abstract class BasePresenter<V extends MvpView> extends MvpBasePresenter<
             compositeDisposable.clear();
             Toothpick.closeScope(this);
         }
+    }
+
+    protected Scope openScope() {
+        return Toothpick.openScopes(Scopes.APPLICATION, this);
+    }
+
+    private final CompositeDisposable compositeDisposable = new CompositeDisposable();
+    private boolean injected;
+    private Module[] modules;
+
+    @Inject
+    protected SchedulerProvider schedulers;
+
+    public BasePresenter(Module... modules) {
+        this.modules = modules;
     }
 
     protected void addSubscription(Disposable subscription) {

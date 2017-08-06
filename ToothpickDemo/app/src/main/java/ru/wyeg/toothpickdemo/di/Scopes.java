@@ -5,5 +5,6 @@ package ru.wyeg.toothpickdemo.di;
  */
 
 public enum Scopes {
-    APPLICATION
+    APPLICATION,
+    USER
 }

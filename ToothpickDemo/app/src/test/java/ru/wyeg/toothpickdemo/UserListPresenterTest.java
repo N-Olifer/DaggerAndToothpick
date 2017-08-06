@@ -25,10 +25,8 @@ import static org.mockito.Mockito.when;
  */
 public class UserListPresenterTest {
 
-    @Mock
-    SchedulerProvider schedulerProvider = new TestSchedulersProvider();
-    @Mock
-    UserListView view = mock(UserListView.class);
+    @Mock SchedulerProvider schedulerProvider = new TestSchedulersProvider();
+    @Mock UserListView view = mock(UserListView.class);
     @Mock GetUsersInteractor getUsersInteractor = mock(GetUsersInteractor.class);
     private final UserListPresenter presenter = new UserListPresenter();
 
@@ -50,3 +48,4 @@ public class UserListPresenterTest {
         verify(view).showUsers(users);
     }
 }
+
