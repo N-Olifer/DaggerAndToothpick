@@ -17,7 +17,8 @@ import ru.wyeg.data.UserEntity;
 /**
  * @author Nikita Olifer.
  */
-public class UserListActivity extends MvpActivity<UserListView, UserListPresenter> implements UserListView {
+public class UserListActivity extends MvpActivity<UserListView, UserListPresenter>
+        implements UserListView {
 
     private RecyclerView usersRecyclerView;
     private UsersAdapter adapter;

@@ -10,12 +10,8 @@ import com.hannesdorfmann.mosby3.mvp.MvpActivity;
 import java.util.List;
 
 import ru.wyeg.data.UserEntity;
-import ru.wyeg.domain.GetUsersInteractor;
 import ru.wyeg.toothpickdemo.R;
-import ru.wyeg.toothpickdemo.di.Scopes;
 import ru.wyeg.toothpickdemo.user.UserActivity;
-import toothpick.Toothpick;
-import toothpick.config.Module;
 
 /**
  * @author Nikita Olifer.
@@ -43,20 +39,7 @@ public class UserListActivity extends MvpActivity<UserListView, UserListPresente
     @NonNull
     @Override
     public UserListPresenter createPresenter() {
-        Toothpick.openScopes(Scopes.APPLICATION, Scopes.USER)
-                .installModules(new Module() {{
-                    bind(GetUsersInteractor.class).to(GetUsersInteractor.class).singletonInScope();
-                }});
-
         return new UserListPresenter();
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        if (isFinishing()) {
-            Toothpick.closeScope(Scopes.USER);
-        }
     }
 
     @Override

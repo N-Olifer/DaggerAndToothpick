@@ -4,10 +4,10 @@ import javax.inject.Inject;
 
 import ru.wyeg.domain.GetUsersInteractor;
 import ru.wyeg.toothpickdemo.di.Scopes;
+import ru.wyeg.toothpickdemo.di.UserModule;
 import ru.wyeg.toothpickdemo.mvp.BasePresenter;
 import toothpick.Scope;
 import toothpick.Toothpick;
-import toothpick.config.Module;
 
 /**
  * @author Nikita Olifer.
@@ -17,13 +17,17 @@ public class UserListPresenter extends BasePresenter<UserListView> {
     @Inject
     GetUsersInteractor getUsersInteractor;
 
-    public UserListPresenter(Module... modules) {
-        super(modules);
+    @Override
+    protected Scope openScope() {
+        Toothpick.openScopes(Scopes.APPLICATION, Scopes.USER)
+                .installModules(new UserModule());
+
+        return Toothpick.openScopes(Scopes.APPLICATION, Scopes.USER, this);
     }
 
     @Override
-    protected Scope openScope() {
-        return Toothpick.openScopes(Scopes.APPLICATION, Scopes.USER, this);
+    protected void closeScope() {
+        Toothpick.closeScope(Scopes.USER);
     }
 
     public void loadUsers() {
