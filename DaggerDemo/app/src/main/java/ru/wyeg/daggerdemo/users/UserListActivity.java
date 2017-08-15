@@ -41,7 +41,7 @@ public class UserListActivity extends MvpActivity<UserListView, UserListPresente
     @NonNull
     @Override
     public UserListPresenter createPresenter() {
-        return new UserListPresenter(App.getInstance().getUsersSubcomponent());
+        return App.getInstance().getUsersSubcomponent().createUserListPresenter();
     }
 
     @Override

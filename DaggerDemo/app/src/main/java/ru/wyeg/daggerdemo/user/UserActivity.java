@@ -39,7 +39,7 @@ public class UserActivity extends MvpActivity<UserView, UserPresenter> implement
     @NonNull
     @Override
     public UserPresenter createPresenter() {
-        return new UserPresenter(App.getInstance().getUsersSubcomponent());
+        return App.getInstance().getUsersSubcomponent().createUserPresenter();
     }
 
 

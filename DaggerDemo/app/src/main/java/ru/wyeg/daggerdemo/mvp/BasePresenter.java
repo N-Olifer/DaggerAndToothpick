@@ -18,6 +18,10 @@ public abstract class BasePresenter<V extends MvpView> extends MvpBasePresenter<
 
     private final CompositeDisposable compositeDisposable = new CompositeDisposable();
 
+    public BasePresenter(SchedulerProvider schedulerProvider) {
+        this.schedulers = schedulerProvider;
+    }
+
     @Override
     public void attachView(V view) {
         super.attachView(view);

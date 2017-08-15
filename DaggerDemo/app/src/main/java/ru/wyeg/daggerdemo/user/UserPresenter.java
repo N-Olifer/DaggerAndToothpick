@@ -2,8 +2,8 @@ package ru.wyeg.daggerdemo.user;
 
 import javax.inject.Inject;
 
-import ru.wyeg.daggerdemo.di.UsersSubcomponent;
 import ru.wyeg.daggerdemo.mvp.BasePresenter;
+import ru.wyeg.daggerdemo.mvp.SchedulerProvider;
 import ru.wyeg.domain.GetUsersInteractor;
 
 /**
@@ -11,11 +11,12 @@ import ru.wyeg.domain.GetUsersInteractor;
  */
 public class UserPresenter extends BasePresenter<UserView> {
 
-    @Inject
-    GetUsersInteractor getUsersInteractor;
+    private final GetUsersInteractor getUsersInteractor;
 
-    UserPresenter(UsersSubcomponent usersSubcomponent) {
-        usersSubcomponent.inject(this);
+    @Inject
+    public UserPresenter(GetUsersInteractor getUsersInteractor, SchedulerProvider schedulerProvider) {
+        super(schedulerProvider);
+        this.getUsersInteractor = getUsersInteractor;
     }
 
     void loadUser(long id) {

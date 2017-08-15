@@ -15,8 +15,7 @@ import ru.wyeg.daggerdemo.users.UserListPresenter;
 )
 public interface UsersSubcomponent {
 
-    void inject(UserPresenter userPresenter);
+    UserListPresenter createUserListPresenter();
 
-    void inject(UserListPresenter userListPresenter);
+    UserPresenter createUserPresenter();
 }
-
